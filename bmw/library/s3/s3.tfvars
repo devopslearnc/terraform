@@ -1,0 +1,5 @@
+bucket_name="bmwcert"
+environment="dev"
+name="bmw"
+cert_name="dev-jenkins"
+bits="4096"
