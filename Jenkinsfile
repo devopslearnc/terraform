@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key-id')
+        AWS_DEFAULT_REGION    = 'us-west-2' // Set your target AWS region
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
@@ -15,6 +21,7 @@ pipeline {
                 sh 'terraform --version'
             }
         }
+        
 
        stage('Terraform Init & Plan') {
             steps {
