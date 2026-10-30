@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                // Automatically uses the Git repo configured in the Jenkins job settings
+                // Automatically uses the Git repo configured in the Jenkins job settings murali
                 checkout scm
               //git url: 'https://github.com/devopslearnc/terraform.git', branch: 'main'
             }
