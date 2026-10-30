@@ -16,16 +16,14 @@ pipeline {
             }
         }
 
-        stage('Terraform Init') {
+       stage('Terraform Init & Plan') {
             steps {
-                sh 'terraform init'
+                // The 'dir' block automatically switches into the specified folder 
+                // for all commands executed inside its steps block
+                dir('bmw/strata/dev') {
+                    sh 'terraform init'
+                    sh 'terraform plan'
+                }
             }
-        }
-
-        stage('Terraform Plan') {
-            steps {
-                sh 'terraform plan'
-            }
-        }
     }
 }
