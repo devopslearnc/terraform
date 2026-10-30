@@ -29,9 +29,6 @@ pipeline {
 
        stage('Terraform Init & Plan') {
             steps {
-                withCredentials([awsCredentials(credentialsId: 'aws-int', 
-                                                accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
-                                                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
                 // The 'dir' block automatically switches into the specified folder 
                 // for all commands executed inside its steps block
                 dir('bmw/strata/dev') {
