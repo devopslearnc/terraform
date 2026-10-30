@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     environment {
-       // AWS_CREDENTIALS = credentials('aws-int')
-        //AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
-        //AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key-id')
-        // These map directly to the Secret Text credentials seen in your earlier dashboard
-        AWS_ACCESS_KEY_ID     = credentials('my-aws-access-key')
+         AWS_ACCESS_KEY_ID     = credentials('my-aws-access-key')
         AWS_SECRET_ACCESS_KEY = credentials('my-aws-secret-key')
         AWS_DEFAULT_REGION    = 'us-west-2' // Set your target AWS region
     }
@@ -14,7 +10,6 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                // Automatically uses the Git repo configured in the Jenkins job settings
                 checkout scm
               //git url: 'https://github.com/devopslearnc/terraform.git', branch: 'main'
             }
@@ -29,11 +24,10 @@ pipeline {
 
        stage('Terraform Init & Plan') {
             steps {
-                // The 'dir' block automatically switches into the specified folder 
-                // for all commands executed inside its steps block
                 dir('bmw/strata/dev') {
                     sh 'terraform init'
                     sh 'terraform plan'
+                    //sh 'terraform plan-target=module.bmw_dev_vpc'
                 }
             }
        }
