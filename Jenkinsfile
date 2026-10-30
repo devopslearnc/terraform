@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-    environment {
-        AWS_CREDENTIALS = credentials('aws-int')
+    //environment {
+       // AWS_CREDENTIALS = credentials('aws-int')
         //AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
         //AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key-id')
-        AWS_DEFAULT_REGION    = 'us-west-2' // Set your target AWS region
-    }
+      //  AWS_DEFAULT_REGION    = 'us-west-2' // Set your target AWS region
+    //}
 
     stages {
         stage('Checkout Code') {
@@ -26,6 +26,9 @@ pipeline {
 
        stage('Terraform Init & Plan') {
             steps {
+                withCredentials([awsCredentials(credentialsId: 'aws-int', 
+                                                accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
+                                                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
                 // The 'dir' block automatically switches into the specified folder 
                 // for all commands executed inside its steps block
                 dir('bmw/strata/dev') {
