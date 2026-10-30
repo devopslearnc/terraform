@@ -1,12 +1,15 @@
 pipeline {
     agent any
 
-    //environment {
+    environment {
        // AWS_CREDENTIALS = credentials('aws-int')
         //AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
         //AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key-id')
-      //  AWS_DEFAULT_REGION    = 'us-west-2' // Set your target AWS region
-    //}
+        // These map directly to the Secret Text credentials seen in your earlier dashboard
+        AWS_ACCESS_KEY_ID     = credentials('43f8b407-5054-4cc0-ae73-b56333f0ddf3')
+        AWS_SECRET_ACCESS_KEY = credentials('032d1517-464b-4b4a-a790-7a661119a21f')
+        AWS_DEFAULT_REGION    = 'us-west-2' // Set your target AWS region
+    }
 
     stages {
         stage('Checkout Code') {
