@@ -10,7 +10,7 @@ pipeline {
             }
         }
 
-        stage('Terraform Version Check') {
+        stage('Terraform Version Check Murali') {
             steps {
                 sh 'terraform --version'
             }
