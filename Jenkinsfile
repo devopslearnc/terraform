@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_CREDENTIALS = credentials('aws-credentials')
+        AWS_CREDENTIALS = credentials('aws-int')
         //AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
         //AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key-id')
         AWS_DEFAULT_REGION    = 'us-west-2' // Set your target AWS region
